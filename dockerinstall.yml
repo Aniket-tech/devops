@@ -1,10 +1,15 @@
 ---
-#docekr ce install on linux
 - name:
   hosts: all
   tasks:
+
   -
-    name: Installing yum utils on all host
+   namme: removing doecker from hosts
+    yum:
+      name: docker,docker-client,docker-client-latest,docker-common,docker-latest,docker-latest-logrotate,docker-logrotate ,docker-engine
+      state: absent
+
+   name: Installing yum utils on all host
     yum:
       name: yum-utils
       state: present
@@ -15,7 +20,7 @@
     args:
      creates: /etc/yum.repos.d/centos_o.repo
   -
-     name: Installing docker  on all host
+     name: Installing docker on all host
      yum:
       name: docker-ce,docker-ce-cli,containerd.io
       state: present
