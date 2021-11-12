@@ -1,0 +1,27 @@
+---
+#docekr ce install on linux
+- name:
+  hosts: all
+  tasks:
+  -
+    name: Installing yum utils on all host
+    yum:
+      name: yum-utils
+      state: present
+
+  -
+    name: Add repo docker-ce
+    shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    args:
+     creates: /etc/yum.repos.d/centos_o.repo
+  -
+     name: Installing docker  on all host
+     yum:
+      name: docker-ce,docker-ce-cli,containerd.io
+      state: present
+  -
+     name: starting docker service on all host
+     service:
+      name: docker
+      state: started
+      enabled: yes
