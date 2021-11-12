@@ -1,0 +1,5 @@
+---
+  - 
+  name: this is checking docker runinig in action 
+  commnad : "docker run -idt -name mydockertest -p 83:80 yogeshraheja/devopsinaction:v1"
+  re
